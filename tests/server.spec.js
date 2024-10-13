@@ -6,9 +6,9 @@ describe("Operaciones CRUD de cafes", () => {
   it("GET/cafes status 200 y tipo de dato arreglo con al menos un objeto", async () => {
     const response = await request(server).get("/cafes");
     expect(response.status).toBe(200);
-    expect(Array.isArray(response.body)).toBe(true);
+    expect(response.body).toBeInstanceOf(Array);
     expect(response.body.length).toBeGreaterThan(0);
-    expect(typeof response.body[0]).toBe('object'); 
+    expect(response.body[0]).toBeInstanceOf(Object);
   });
 
   it('DELETE/cafes status 404 para id que no existe', async () => {
